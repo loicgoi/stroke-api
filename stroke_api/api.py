@@ -19,7 +19,7 @@ def get_patients(gender: str = None, stroke: int = None, max_age: float = None):
 @router.get("/patients/{patient_id}")
 def get_patient_by_id(patient_id: int):
     patient = stroke_data_df[stroke_data_df['id'] == patient_id]
-    if patient.empty():
+    if patient.empty:
         raise HTTPException(status_code=404, detail='Patient non trouvé')
     return patient.to_dict("records")[0]
     # Gérer le cas où l'id de patient passé en paramètre n'existe pas
